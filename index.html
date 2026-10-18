@@ -1,57 +1,86 @@
 <!doctype html>
-<html lang="pt-BR" class="dark scroll-smooth">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Loja de equipamentos para trilha e camping.">
-  <title>Trilha Verde — equipamentos de trilha e camping</title>
+  <title>Trilha Verde | equipamentos de trilha e camping</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
-      theme: { extend: { fontFamily: { sans: ['DM Sans', 'sans-serif'], mono: ['DM Mono', 'monospace'] } } }
+      theme: { extend: {
+        fontFamily: { sans: ['Barlow', 'sans-serif'] },
+        colors: { mata: '#2d5a3d', mataescuro: '#1f3f2b', laranja: '#d4691f' }
+      } }
     };
   </script>
-  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-zinc-100 font-sans text-zinc-900 transition-colors dark:bg-[#090a0b] dark:text-[#f3f2ef]">
-  <header class="sticky top-0 z-30 grid min-h-[106px] grid-cols-[1fr_450px_1fr] items-center gap-6 border-b border-zinc-300 bg-zinc-100 px-[9%] dark:border-[#292a2e] dark:bg-[#090a0b] max-md:grid-cols-[1fr_auto] max-md:gap-4 max-md:px-5 max-md:py-4">
-    <a class="text-base no-underline" href="#inicio" aria-label="Trilha Verde, início"><span class="text-[#6b8e7b]">△</span> <strong>Trilha Verde</strong></a>
-    <label class="flex h-9 items-center gap-2.5 rounded-md border border-zinc-300 px-3 text-zinc-500 dark:border-[#292a2e] dark:text-zinc-400 max-md:col-span-2 max-md:row-start-2"><span>⌕</span><input id="busca" class="w-full border-0 bg-transparent outline-none placeholder:text-zinc-500 dark:placeholder:text-zinc-500" type="search" placeholder="Buscar equipamento..." autocomplete="off"></label>
-    <div class="justify-self-end flex gap-2.5"><button id="tema" class="h-9 w-9 rounded-md border border-zinc-300 text-lg dark:border-[#292a2e]" type="button" aria-label="Alternar tema">☼</button><button id="abrir-carrinho" class="h-9 rounded-md border border-zinc-300 px-2.5 dark:border-[#292a2e]" type="button">⌑ <strong>Carrinho</strong> <b id="contador" class="ml-1 rounded-full bg-zinc-900 px-1.5 py-0.5 text-xs text-white dark:bg-[#f1f0ed] dark:text-[#121315]">0</b></button></div>
+<body class="bg-stone-100 font-sans text-stone-900 dark:bg-neutral-900 dark:text-stone-100">
+  <header class="sticky top-0 z-30 bg-mata text-white">
+    <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-3 px-4 py-3">
+      <a href="#inicio" class="mr-auto text-2xl font-bold sm:mr-4">Trilha Verde</a>
+      <input id="busca" class="order-last w-full rounded bg-white px-3 py-2 text-stone-900 placeholder:text-stone-500 sm:order-none sm:w-auto sm:flex-1" type="search" placeholder="Buscar equipamento" aria-label="Buscar equipamento" autocomplete="off">
+      <button id="tema" class="rounded border border-white/40 px-3 py-2 hover:bg-white/10" type="button">Tema</button>
+      <button id="abrir-carrinho" class="rounded bg-laranja px-3 py-2 font-semibold hover:opacity-90" type="button">Carrinho (<span id="contador">0</span>)</button>
+    </div>
   </header>
 
   <main id="inicio">
-    <section class="relative min-h-[513px] overflow-hidden border-b border-zinc-300 dark:border-[#292a2e]">
-      <div class="absolute inset-0 scale-x-[1.8] bg-[repeating-radial-gradient(ellipse_at_55%_42%,transparent_0_28px,#e2e2e2_29px_31px,transparent_32px_58px)] opacity-80 dark:bg-[repeating-radial-gradient(ellipse_at_55%_42%,transparent_0_28px,#17181b_29px_31px,transparent_32px_58px)]"></div>
-      <div class="relative mx-auto max-w-7xl px-7 pt-[78px] max-md:pt-14">
-        <h1 class="text-[39px] font-bold leading-[1.22] tracking-[-1.6px] max-md:text-3xl">Da barraca à bússola, o que<br>cabe na mochila.</h1>
-        <p class="mt-4 leading-7 text-zinc-600 dark:text-zinc-400">Catálogo pequeno e direto: 12 itens em 7 categorias, sem review<br>patrocinada nem enrolação de vitrine.</p>
-        <a href="#catalogo" class="mt-6 inline-block rounded-md bg-zinc-900 px-[18px] py-[11px] font-bold text-white no-underline dark:bg-[#f1f0ed] dark:text-[#121315]">Ver catálogo</a>
-        <div class="mt-10 grid overflow-hidden rounded-lg border border-zinc-300 bg-white dark:border-[#292a2e] dark:bg-[#0b0c0e] md:grid-cols-[1.35fr_1fr_1fr]">
-          <div class="min-h-[116px] border-b border-zinc-300 p-5 dark:border-[#292a2e] md:border-b-0 md:border-r"><small class="text-xs text-zinc-500 dark:text-zinc-400">O que vendemos</small><p class="mt-3 text-[13px] leading-7 text-zinc-600 dark:text-zinc-400">△ Barracas　♧ Mochilas　⌇ Dormir　♨ Cozinha<br>♧ Calçados　⊙ Acessórios</p></div>
-          <div class="min-h-[116px] border-b border-zinc-300 p-5 dark:border-[#292a2e] md:border-b-0 md:border-r"><small class="text-xs text-zinc-500 dark:text-zinc-400">Frete grátis a partir de</small><strong class="mt-6 block font-mono text-xl font-medium">R$ 299</strong></div>
-          <div class="min-h-[116px] p-5"><small class="text-xs text-zinc-500 dark:text-zinc-400">O carrinho fica salvo</small><p class="mt-3 text-[13px] leading-6"><b>Fecha a aba e continua do mesmo jeito<br>quando voltar.</b></p></div>
-        </div>
+    <section class="bg-mataescuro text-white">
+      <div class="mx-auto max-w-6xl px-4 py-12">
+        <h1 class="max-w-xl text-4xl font-bold leading-tight max-sm:text-3xl">Equipamentos pra sua próxima trilha</h1>
+        <p class="mt-3 max-w-lg text-lg text-stone-200">Barracas, mochilas, saco de dormir e tudo o que você precisa pra acampar. Frete grátis em compras acima de R$ 299.</p>
+        <a href="#catalogo" class="mt-6 inline-block rounded bg-laranja px-5 py-2.5 font-semibold hover:opacity-90">Ver produtos</a>
       </div>
     </section>
 
-    <section id="catalogo" class="mx-auto grid max-w-7xl grid-cols-[190px_1fr] gap-8 px-7 py-8 max-md:grid-cols-1 max-md:gap-5">
-      <aside><small class="mb-3 block text-[11px] text-zinc-500 dark:text-zinc-400">CATEGORIAS</small><div id="categorias" class="grid gap-1 max-md:grid-cols-2"></div></aside>
-      <div><div class="flex min-h-[46px] items-start justify-between text-zinc-500 dark:text-zinc-400"><span id="quantidade">12 produtos</span><select id="ordenar" class="-mt-px rounded-md border border-zinc-300 bg-white px-2 py-[7px] font-semibold text-zinc-900 dark:border-[#292a2e] dark:bg-[#090a0b] dark:text-[#f3f2ef]" aria-label="Ordenar produtos"><option value="padrao">Ordenar: padrão</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option><option value="nome">Nome (A–Z)</option></select></div><div id="produtos" class="grid grid-cols-3 overflow-hidden rounded-lg border border-zinc-300 dark:border-[#292a2e] max-md:grid-cols-2"></div><p id="vazio" class="p-10 text-center text-zinc-500" hidden>Nenhum produto encontrado.</p></div>
+    <section id="catalogo" class="mx-auto grid max-w-6xl gap-6 px-4 py-8 md:grid-cols-[170px_1fr]">
+      <aside>
+        <h2 class="mb-2 font-bold">Categorias</h2>
+        <div id="categorias" class="flex flex-wrap gap-2 md:flex-col md:gap-1"></div>
+      </aside>
+      <div>
+        <div class="mb-4 flex items-center justify-between gap-3">
+          <span id="quantidade" class="text-stone-600 dark:text-stone-400">12 produtos</span>
+          <select id="ordenar" class="rounded border border-stone-300 bg-white px-2 py-1.5 dark:border-neutral-600 dark:bg-neutral-800" aria-label="Ordenar produtos">
+            <option value="padrao">Ordenar: padrão</option>
+            <option value="menor">Menor preço</option>
+            <option value="maior">Maior preço</option>
+            <option value="nome">Nome (A–Z)</option>
+          </select>
+        </div>
+        <div id="produtos" class="grid grid-cols-2 gap-4 lg:grid-cols-3"></div>
+        <p id="vazio" class="py-10 text-center text-stone-600 dark:text-stone-400" hidden>Nenhum produto encontrado.</p>
+      </div>
     </section>
   </main>
-  <footer class="border-t border-zinc-300 px-[9%] py-6 text-xs text-zinc-500 dark:border-[#292a2e] dark:text-zinc-400">Trilha Verde — projeto de estudo, sem processamento de pagamento real. <span class="float-right max-md:float-none max-md:mt-1 max-md:block">12 itens · atualizado manualmente no código</span></footer>
 
-  <div id="fundo" class="fixed inset-0 z-40 bg-black/60" hidden></div>
-  <aside id="painel-carrinho" class="fixed inset-y-0 right-0 z-50 flex w-full max-w-[420px] translate-x-full flex-col border-l border-zinc-300 bg-white transition-transform duration-300 dark:border-[#292a2e] dark:bg-[#111214]" aria-label="Seu carrinho" aria-hidden="true">
-    <div class="flex items-center justify-between border-b border-zinc-300 px-5 py-[18px] dark:border-[#292a2e]"><h2 class="m-0 text-[22px] font-bold">Seu carrinho</h2><button id="fechar-carrinho" class="h-9 w-9 rounded-md border border-zinc-300 text-xl dark:border-[#292a2e]" aria-label="Fechar carrinho">×</button></div>
-    <div id="itens-carrinho" class="flex-1 overflow-auto px-5 py-2"></div>
-    <div class="border-t border-zinc-300 p-5 dark:border-[#292a2e]"><p id="frete" class="mb-2 font-semibold"></p><div class="h-1.5 overflow-hidden rounded-full bg-zinc-300 dark:bg-[#2e3034]"><i id="progresso" class="block h-full w-0 bg-[#6b8e7b]"></i></div><div class="my-5 flex justify-between"><span>Subtotal</span><strong id="subtotal" class="font-mono text-xl font-medium">R$ 0,00</strong></div><small class="text-zinc-500 dark:text-zinc-400">Frete calculado ao finalizar o pedido.</small><button id="finalizar" class="mt-3 w-full rounded-md bg-zinc-900 p-2.5 font-bold text-white dark:bg-[#f1f0ed] dark:text-[#121315]" type="button">Finalizar compra</button></div>
+  <footer class="border-t border-stone-300 px-4 py-6 text-center text-sm text-stone-600 dark:border-neutral-700 dark:text-stone-400">
+    Trilha Verde é um projeto de estudo. Nenhum pagamento é processado de verdade.
+  </footer>
+
+  <div id="fundo" class="fixed inset-0 z-40 bg-black/50" hidden></div>
+  <aside id="painel-carrinho" class="fixed inset-y-0 right-0 z-50 flex w-full max-w-sm translate-x-full flex-col bg-white shadow-lg transition-transform duration-300 dark:bg-neutral-800" aria-label="Seu carrinho" aria-hidden="true">
+    <div class="flex items-center justify-between bg-mata px-4 py-3 text-white">
+      <h2 class="text-xl font-bold">Seu carrinho</h2>
+      <button id="fechar-carrinho" class="px-2 text-2xl leading-none" type="button" aria-label="Fechar carrinho">×</button>
+    </div>
+    <div id="itens-carrinho" class="flex-1 overflow-auto px-4 py-2"></div>
+    <div class="border-t border-stone-300 p-4 dark:border-neutral-700">
+      <p id="frete" class="mb-2 font-semibold"></p>
+      <div class="h-2 overflow-hidden rounded bg-stone-200 dark:bg-neutral-700"><div id="progresso" class="h-full w-0 bg-mata"></div></div>
+      <div class="my-4 flex justify-between text-lg"><span>Subtotal</span><strong id="subtotal">R$ 0,00</strong></div>
+      <p class="text-sm text-stone-600 dark:text-stone-400">Frete calculado ao finalizar o pedido.</p>
+      <button id="finalizar" class="mt-3 w-full rounded bg-laranja py-2.5 font-semibold text-white hover:opacity-90" type="button">Finalizar compra</button>
+    </div>
   </aside>
-  <div id="aviso" class="pointer-events-none fixed bottom-6 left-1/2 z-[60] -translate-x-1/2 translate-y-5 rounded-md bg-zinc-900 px-3.5 py-2.5 font-bold text-white opacity-0 transition-all dark:bg-[#f1f0ed] dark:text-[#121315]" role="status"></div>
-  <script src="js/produtos.js"></script><script src="js/script.js"></script>
+  <div id="aviso" class="pointer-events-none fixed bottom-6 left-1/2 z-[60] -translate-x-1/2 rounded bg-stone-900 px-4 py-2 font-semibold text-white opacity-0 transition-opacity" role="status"></div>
+
+  <script src="js/produtos.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
