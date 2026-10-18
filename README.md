@@ -51,5 +51,3 @@ Esse projeto foi construído para praticar a criação de uma interface de loja 
 * **Persistência de dados:** uso de `localStorage`, `JSON.stringify()` e `JSON.parse()` para salvar e recuperar o carrinho.
 * **SVGs inline:** os ícones personalizados das categorias são desenhados com SVG no JavaScript, sem depender de biblioteca externa de ícones.
 * **Formatação de valores:** preços são exibidos em reais com `toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })`.
-
-Valeu!
